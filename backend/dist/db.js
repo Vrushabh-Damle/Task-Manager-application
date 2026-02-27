@@ -21,4 +21,9 @@ const taskSchema = new Schema({
     completed: { type: Boolean, default: false },
 });
 export const taskModel = model("Task", taskSchema);
+const userSchema = new Schema({
+    username: { type: String, required: true },
+    password: { type: String, required: true },
+});
+export const userModel = model("User", userSchema);
 //# sourceMappingURL=db.js.map

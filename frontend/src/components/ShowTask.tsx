@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 interface GetTasksResponse {
-  Tasks: Task[];
+  tasks: Task[];
 }
 interface Task {
   _id: string;
@@ -9,7 +9,7 @@ interface Task {
   completed: boolean;
 }
 export function ShowTasks() {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<any[]>([]);
   const [title, setTitle] = useState<string>("");
   const [completed, setCompleted] = useState<boolean>(false);
 
@@ -18,7 +18,7 @@ export function ShowTasks() {
       "http://localhost:3000/api/v1/task/getAllTheTasks",
     );
     console.log(response);
-    setTasks(response.data.Tasks);
+    setTasks(response.data.tasks);
   }
 
   useEffect(() => {
