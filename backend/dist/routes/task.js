@@ -12,7 +12,7 @@ taskRouter.get("/getAllTheTasks", async (req, res) => {
                 .json({ message: "error while fetching tasks from the db" });
             return;
         }
-        res.status(200).json({ Tasks: allTheTasks });
+        res.status(200).json({ tasks: allTheTasks });
     }
     catch (error) {
         console.log("Error occured", error);
@@ -33,6 +33,36 @@ taskRouter.post("/createNewTask", async (req, res) => {
     }
     catch (error) {
         console.log("Error ocured while creating task", error);
+    }
+});
+taskRouter.put("/updateTask/:id", async (req, res) => {
+    const { id } = req.params;
+    const { title, completed } = req.body;
+    try {
+        const updated = await taskModel.findByIdAndUpdate(id, {
+            title: title,
+            completed: completed,
+        });
+        if (!updated) {
+            res.status(404).json({ message: "Document not updated" });
+        }
+        res.status(200).json({ message: "Your document is updated " });
+    }
+    catch (err) {
+        console.log("Error while updating document", err);
+    }
+});
+taskRouter.delete("/deleteTask/:id", async (req, res) => {
+    const { id } = req.params;
+    try {
+        const deleted = await taskModel.findByIdAndDelete(id);
+        if (!deleted) {
+            res.status(404).json({ message: "Document is failed to delete" });
+        }
+        res.status(200).json({ message: "Your document is deleted" });
+    }
+    catch (err) {
+        console.log("Error while deletin document", err);
     }
 });
 //# sourceMappingURL=task.js.map

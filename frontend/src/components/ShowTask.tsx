@@ -50,7 +50,7 @@ export function ShowTasks() {
             <p>{task.title}</p>
           </div>
           <div>
-            <p>{task.completed ? "Completed" : "Loading"}</p>
+            <p>{task.completed ? "Completed" : "started"}</p>
           </div>
         </div>
       </div>

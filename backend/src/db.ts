@@ -22,3 +22,9 @@ const taskSchema = new Schema({
 });
 
 export const taskModel = model("Task", taskSchema);
+
+const userSchema = new Schema({
+  username: { type: String, required: true },
+  password: { type: String, required: true },
+});
+export const userModel = model("User", userSchema);
