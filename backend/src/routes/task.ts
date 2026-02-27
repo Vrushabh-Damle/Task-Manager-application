@@ -12,7 +12,7 @@ taskRouter.get("/getAllTheTasks", async (req, res) => {
         .json({ message: "error while fetching tasks from the db" });
       return;
     }
-    res.status(200).json({ Tasks: allTheTasks });
+    res.status(200).json({ tasks: allTheTasks });
   } catch (error: any) {
     console.log("Error occured", error);
   }
