@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleSignup = async (e: any) => {
     e.preventDefault();
@@ -26,6 +28,7 @@ function Signup() {
         setMessage("Signup successful ");
         setUsername("");
         setPassword("");
+        navigate("/signin");
       } else {
         setMessage(data.error || "Signup failed ");
       }
