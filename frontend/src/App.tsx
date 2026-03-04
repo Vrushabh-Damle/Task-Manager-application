@@ -1,21 +1,21 @@
 import "./App.css";
 
-import Signup from "./components/signup";
-import Signin from "./components/signin";
+import Signup from "./components/Signup";
+import Signin from "./components/Signin";
 import { ShowTasks } from "./components/ShowTask";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          {" "}
-          <Route path="/" element={<Signup />} />
-          <Route path="/signin" element={<Signin />} />
-          <Route path="/dashboard" element={<ShowTasks />} />
-        </Routes>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/signup" replace />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/dashboard" element={<ShowTasks />} />
+        <Route path="*" element={<Navigate to="/signup" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
